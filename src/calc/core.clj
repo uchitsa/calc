@@ -1,5 +1,6 @@
 (ns calc.core
-  (:gen-class))
+  (:gen-class)
+  (:require [clojure.string :as str]))
 
 (defn read-expr []
   (println "Enter the expression (like: 2 + 2 * 2):")
@@ -15,7 +16,7 @@
   (println "Simple calc. Enter 'quit' to exit.")
   (loop []
     (let [expr (read-expr)]
-      (if (= "quit" (clojure.string/lower-case expr))
+      (if (= "quit" (str/lower-case expr))
         (do (println "Bye bye!")
           (System/exit 0))
         (do (println "Result is: " (calc expr))
